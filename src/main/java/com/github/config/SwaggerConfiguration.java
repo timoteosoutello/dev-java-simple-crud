@@ -14,10 +14,10 @@ import io.swagger.v3.oas.models.info.Info;
  */
 @Configuration
 public class SwaggerConfiguration {
-	@Bean
-	public OpenAPI customOpenAPI(@Value("${info.app.name}") String appName,
-			@Value("${info.app.description}") String appDescription,
-			@Value("${info.app.description}") String appVersion) {
-		return new OpenAPI().info(new Info().title(appName).version(appVersion).description(appDescription));
-	}
+    @Bean
+    public OpenAPI customOpenAPI(@Value("${info.app.name}") String appName,
+	    @Value("${info.app.description}") String appDescription,
+	    @Value("${info.app.description}") String appVersion) {
+	return new OpenAPI().info(new Info().title(appName).version(appVersion).description(appDescription));
+    }
 }

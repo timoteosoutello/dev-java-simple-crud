@@ -15,8 +15,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class MainTest {
 
-	@Test
-	public void dummyTest() {
-		assert true;
-	}
+    @Test
+    public void dummyTest() {
+	assert true;
+    }
 }

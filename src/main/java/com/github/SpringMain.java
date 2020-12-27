@@ -14,7 +14,7 @@ import org.springframework.retry.annotation.EnableRetry;
 @SpringBootApplication
 @EnableRetry
 public class SpringMain extends SpringBootServletInitializer {
-  public static void main(final String[] args) {
-    SpringApplication.run(SpringMain.class, args);
-  }
+    public static void main(final String[] args) {
+	SpringApplication.run(SpringMain.class, args);
+    }
 }

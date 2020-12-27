@@ -25,62 +25,62 @@ import lombok.Setter;
 @Table(name = "User")
 public class User implements Serializable {
 
-  private static final long serialVersionUID = 2024647852460239851L;
-  /**
-   * User identifier.
-   */
-  @Id
-  @Column
-  @GeneratedValue(generator = "uuid2")
-  @GenericGenerator(name = "uuid2", strategy = "uuid")
-  private String id;
+    private static final long serialVersionUID = 2024647852460239851L;
+    /**
+     * User identifier.
+     */
+    @Id
+    @Column
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid")
+    private String id;
 
-  /**
-   * Profile object.
-   */
-  @OneToOne
-  @JoinColumn(name = "profile_id")
-  private Profile profile;
+    /**
+     * Profile object.
+     */
+    @OneToOne
+    @JoinColumn(name = "profile_id")
+    private Profile profile;
 
-  /**
-   * User name.
-   */
-  @Column
-  @NotNull
-  private String name;
+    /**
+     * User name.
+     */
+    @Column
+    @NotNull
+    private String name;
 
-  /**
-   * User email.
-   */
-  @Column
-  @NotNull
-  private String email;
+    /**
+     * User email.
+     */
+    @Column
+    @NotNull
+    private String email;
 
-  /**
-   * User password.
-   */
-  @Column
-  @NotNull
-  private String password;
+    /**
+     * User password.
+     */
+    @Column
+    @NotNull
+    private String password;
 
-  /**
-   * User phone.
-   */
-  @Column
-  private String phone;
+    /**
+     * User phone.
+     */
+    @Column
+    private String phone;
 
-  @Override
-  public String toString() {
-    return ToStringBuilder.reflectionToString(this);
-  }
+    @Override
+    public String toString() {
+	return ToStringBuilder.reflectionToString(this);
+    }
 
-  @Override
-  public boolean equals(final Object object) {
-    return EqualsBuilder.reflectionEquals(this, object);
-  }
+    @Override
+    public boolean equals(final Object object) {
+	return EqualsBuilder.reflectionEquals(this, object);
+    }
 
-  @Override
-  public int hashCode() {
-    return HashCodeBuilder.reflectionHashCode(this);
-  }
+    @Override
+    public int hashCode() {
+	return HashCodeBuilder.reflectionHashCode(this);
+    }
 }

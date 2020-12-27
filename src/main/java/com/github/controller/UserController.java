@@ -18,12 +18,12 @@ import com.querydsl.core.types.Predicate;
 @RequestMapping("/v1/users")
 public class UserController {
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@GetMapping
-	public Page<User> query(@QuerydslPredicate(root = User.class) Predicate predicate,
-			@SortDefault(sort = "name", direction = Sort.Direction.ASC) Pageable pageable) {
-		return userRepository.findAll(predicate, pageable);
-	}
+    @GetMapping
+    public Page<User> query(@QuerydslPredicate(root = User.class) Predicate predicate,
+	    @SortDefault(sort = "name", direction = Sort.Direction.ASC) Pageable pageable) {
+	return userRepository.findAll(predicate, pageable);
+    }
 }

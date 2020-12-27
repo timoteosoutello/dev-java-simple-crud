@@ -6,14 +6,15 @@ import org.springframework.data.web.config.PageableHandlerMethodArgumentResolver
 
 /**
  * Enables to set to page = 1 as initial configuration
+ * 
  * @author Timóteo Soutello
  *
  */
 @Configuration
 public class SpringDataConfiguration {
 
-	@Bean
-	public PageableHandlerMethodArgumentResolverCustomizer customize() {
-		return p -> p.setOneIndexedParameters(true);
-	}
+    @Bean
+    public PageableHandlerMethodArgumentResolverCustomizer customize() {
+	return p -> p.setOneIndexedParameters(true);
+    }
 }

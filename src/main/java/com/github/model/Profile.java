@@ -20,35 +20,35 @@ import lombok.Setter;
 @Table(name = "Profile")
 public class Profile implements Serializable {
 
-  private static final long serialVersionUID = -4943562752209163968L;
-  /**
-   * Profile identifier.
-   */
-  @Id
-  @Column
-  @GeneratedValue(generator = "uuid2")
-  @GenericGenerator(name = "uuid2", strategy = "uuid")
-  private String id;
+    private static final long serialVersionUID = -4943562752209163968L;
+    /**
+     * Profile identifier.
+     */
+    @Id
+    @Column
+    @GeneratedValue(generator = "uuid2")
+    @GenericGenerator(name = "uuid2", strategy = "uuid")
+    private String id;
 
-  /**
-   * Profile description.
-   */
-  @Column
-  @NotNull
-  private String description;
+    /**
+     * Profile description.
+     */
+    @Column
+    @NotNull
+    private String description;
 
-  @Override
-  public String toString() {
-    return ToStringBuilder.reflectionToString(this);
-  }
+    @Override
+    public String toString() {
+	return ToStringBuilder.reflectionToString(this);
+    }
 
-  @Override
-  public boolean equals(final Object object) {
-    return EqualsBuilder.reflectionEquals(this, object);
-  }
+    @Override
+    public boolean equals(final Object object) {
+	return EqualsBuilder.reflectionEquals(this, object);
+    }
 
-  @Override
-  public int hashCode() {
-    return HashCodeBuilder.reflectionHashCode(this);
-  }
+    @Override
+    public int hashCode() {
+	return HashCodeBuilder.reflectionHashCode(this);
+    }
 }
