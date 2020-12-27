@@ -15,7 +15,7 @@
         <junit-engine.version>5.6.2</junit-engine.version>
         <junit-platform.version>1.6.2</junit-platform.version>
         <kotlin.version>1.4.21</kotlin.version>
-        <liquibase.version>4.2.2</liquibase.version>
+        <liquibase.version>4.0.0</liquibase.version>
         <log4j2.version>2.14.0</log4j2.version>
         <lombok.version>1.18.16</lombok.version>
         <mockito.version>3.6.28</mockito.version>
@@ -146,11 +146,13 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
         <!-- H2 CONFIG -->
+        <!-- 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
+            <scope>test</scope>
         </dependency>
+         -->
         <!-- Bean Validator -->
         <dependency>
             <groupId>javax.validation</groupId>

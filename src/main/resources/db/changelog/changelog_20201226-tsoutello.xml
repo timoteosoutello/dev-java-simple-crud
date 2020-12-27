@@ -43,11 +43,11 @@
 	<changeSet author="tsoutello" id="20201226-003">
 		<addForeignKeyConstraint
 			baseColumnNames="PROFILE_ID" baseTableName="USER"
-			constraintName="FK_USER_PROFILE" deferrable="false"
-			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
-			referencedColumnNames="ID" referencedTableName="PROFILE" />
+			referencedTableName="PROFILE" referencedColumnNames="ID"
+			constraintName="FK_USER_PROFILE" onDelete="RESTRICT"
+			onUpdate="RESTRICT" />
 	</changeSet>
-	
+
 	<!-- Initial Charge PROFILE -->
 
 	<changeSet author="tsoutello" id="20201226-004">

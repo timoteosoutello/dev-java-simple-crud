@@ -6,7 +6,7 @@ RUN mkdir $APP_HOME
 
 WORKDIR $APP_HOME
 
-COPY target/spring-data-rest.jar application.jar
+COPY target/dev-java-simple-crud.jar application.jar
 
 EXPOSE 8787
 
