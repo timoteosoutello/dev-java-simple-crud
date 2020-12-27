@@ -1,0 +1,57 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: spring
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring
+  namespace: spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+      - image: tsoutello/spring-backend:1.0.3
+        name: spring
+        ports:
+        - containerPort: 9797
+        livenessProbe:
+          httpGet:
+              path: /spring-data-rest/api/actuator/health/livenessState
+              port: 9797
+          initialDelaySeconds: 60
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
+          successThreshold: 1
+        readinessProbe:
+          httpGet:
+              path: /spring-data-rest/api/actuator/health/readinessState
+              port: 9797
+          initialDelaySeconds: 60
+          periodSeconds: 5
+          timeoutSeconds: 2
+          failureThreshold: 3
+          successThreshold: 1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring
+  namespace: spring
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9797
+      targetPort: 9797
+  selector:
+    app: spring

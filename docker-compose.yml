@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0.22
+    networks:
+      - dev-java-network
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_DATABASE=devjavasimplecrud
+  web:
+    image: dev-java-simple-crud
+    networks:
+      - dev-java-network
+    depends_on:
+      - mysql
+    ports:
+      - "8787:8787"
+    tty: true
+    stdin_open: true
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+networks:
+  dev-java-network:
+    driver: bridge

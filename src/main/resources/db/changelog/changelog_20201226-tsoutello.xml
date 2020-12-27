@@ -1,0 +1,75 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
+	objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+
+	<changeSet author="tsoutello" id="20201226-001">
+		<createTable tableName="PROFILE">
+			<column name="ID" type="VARCHAR(60)" autoIncrement="false">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="DESCRIPTION" type="VARCHAR(20)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="tsoutello" id="20201226-002">
+		<createTable tableName="USER">
+			<column name="ID" type="VARCHAR(60)" autoIncrement="false">
+				<constraints primaryKey="true" />
+			</column>
+			<column name="PROFILE_ID" type="VARCHAR(60)">
+				<constraints nullable="false" />
+			</column>
+			<column name="NAME" type="VARCHAR(125)">
+				<constraints nullable="false" />
+			</column>
+			<column name="EMAIL" type="VARCHAR(40)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PASSWORD" type="VARCHAR(30)">
+				<constraints nullable="false" />
+			</column>
+			<column name="PHONE" type="VARCHAR(20)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="tsoutello" id="20201226-003">
+		<addForeignKeyConstraint
+			baseColumnNames="PROFILE_ID" baseTableName="USER"
+			constraintName="FK_USER_PROFILE" deferrable="false"
+			initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT"
+			referencedColumnNames="ID" referencedTableName="PROFILE" />
+	</changeSet>
+	
+	<!-- Initial Charge PROFILE -->
+
+	<changeSet author="tsoutello" id="20201226-004">
+		<loadData file="/db/csv/20201226-PROFILE.csv" separator=";"
+			tableName="PROFILE">
+			<column header="ID" name="ID" type="string" />
+			<column header="DESCRIPTION" name="DESCRIPTION" type="string" />
+		</loadData>
+	</changeSet>
+
+	<!-- Initial Charge USER (ONLY THE USER MASTER) -->
+
+	<changeSet author="tsoutello" id="20201226-005">
+		<loadData file="/db/csv/20201226-USER.csv" separator=";"
+			tableName="USER">
+			<column header="ID" name="ID" type="string" />
+			<column header="PROFILE_ID" name="PROFILE_ID" type="string" />
+			<column header="NAME" name="NAME" type="string" />
+			<column header="EMAIL" name="EMAIL" type="string" />
+			<column header="PASSWORD" name="PASSWORD" type="string" />
+			<column header="PHONE" name="PHONE" type="string" />
+		</loadData>
+	</changeSet>
+
+</databaseChangeLog>
