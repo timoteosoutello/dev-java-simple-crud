@@ -1,20 +1,24 @@
 version: '3.8'
 services:
-  mysql:
-    image: mysql:8.0.22
+#  db:
+#    image: mysql/mysql-server:8.0.22
+#    ports:
+#      - "3307:3306"
+#    networks:
+#      - backend-net
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=admin
+#      - MYSQL_PASSWORD=admin
+#      - MYSQL_USER=root
+#      - MYSQL_DATABASE=devjavasimplecrud
+#      - MYSQL_ROOT_HOST=%
+  backend:
+    image: dev-java-simple-crud:latest
     networks:
-      - dev-java-network
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_USER=root
-      - MYSQL_DATABASE=devjavasimplecrud
-  web:
-    image: dev-java-simple-crud
-    networks:
-      - dev-java-network
-    depends_on:
-      - mysql
+      - backend-net
+#    depends_on:
+#      - db
     ports:
       - "8787:8787"
     tty: true
@@ -23,9 +27,7 @@ services:
       resources:
         limits:
           memory: 1G
-    environment:
-      JVM_OPTS: >
-        -Dspring.profiles.active=docker
+
 networks:
-  dev-java-network:
+  backend-net:
     driver: bridge

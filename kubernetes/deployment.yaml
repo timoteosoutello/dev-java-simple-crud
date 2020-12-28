@@ -20,14 +20,14 @@ spec:
         app: spring
     spec:
       containers:
-      - image: tsoutello/spring-backend:1.0.3
+      - image: tsoutello/dev-java-simple-crud:1.0.0
         name: spring
         ports:
-        - containerPort: 9797
+        - containerPort: 8787
         livenessProbe:
           httpGet:
-              path: /spring-data-rest/api/actuator/health/livenessState
-              port: 9797
+              path: /dev-java-simple-crud/api/actuator/health/livenessState
+              port: 8787
           initialDelaySeconds: 60
           periodSeconds: 5
           timeoutSeconds: 2
@@ -35,8 +35,8 @@ spec:
           successThreshold: 1
         readinessProbe:
           httpGet:
-              path: /spring-data-rest/api/actuator/health/readinessState
-              port: 9797
+              path: /dev-java-simple-crud/api/actuator/health/readinessState
+              port: 8787
           initialDelaySeconds: 60
           periodSeconds: 5
           timeoutSeconds: 2
@@ -51,7 +51,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - port: 9797
-      targetPort: 9797
+    - port: 8787
+      targetPort: 8787
   selector:
     app: spring

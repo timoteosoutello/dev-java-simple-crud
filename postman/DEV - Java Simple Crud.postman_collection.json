@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "f7a20e04-27cf-4de6-8856-82c84288991d",
+		"name": "DEV - Java Simple Crud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users with Filter",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/users?name=master&page=1&size=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "master"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url}}/v1/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profile\" : \"http://localhost:9797/spring-data-rest/api/profiles/75778a0e-ccac-4dd1-af6a-9013f3635c71\",\r\n    \"name\": \"Timoteo\",\r\n    \"password\" : \"test\",\r\n    \"phone\" : 99999999,\r\n    \"email\": \"tsoutello@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profile\" : \"http://localhost:9797/spring-data-rest/api/profiles/75778a0e-ccac-4dd1-af6a-9013f3635c71\",\r\n    \"name\": \"Timoteo\",\r\n    \"password\" : \"test\",\r\n    \"phone\" : 99999777,\r\n    \"email\": \"tsoutello@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/2c94b08176a6f6d70176a6f82f190001",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"2c94b08176a6f6d70176a6f82f190001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Users",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"profile\" : \"http://localhost:9797/spring-data-rest/api/profiles/75778a0e-ccac-4dd1-af6a-9013f3635c71\",\r\n    \"name\": \"Timoteo\",\r\n    \"password\" : \"test\",\r\n    \"phone\" : 99999999,\r\n    \"email\": \"tsoutello@gmail.com\"\r\n}"
+				},
+				"url": {
+					"raw": "{{url}}/users/2c94b08176a6f6d70176a6f72e680000",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"2c94b08176a6f6d70176a6f72e680000"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
