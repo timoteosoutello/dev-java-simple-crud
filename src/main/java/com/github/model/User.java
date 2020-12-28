@@ -45,21 +45,21 @@ public class User implements Serializable {
     /**
      * User name.
      */
-    @Column
+    @Column(nullable = false)
     @NotNull
     private String name;
 
     /**
      * User email.
      */
-    @Column
+    @Column(nullable = false)
     @NotNull
     private String email;
 
     /**
      * User password.
      */
-    @Column
+    @Column(nullable = false)
     @NotNull
     private String password;
 
