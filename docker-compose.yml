@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+#  db:
+#    image: mysql/mysql-server:8.0.22
+#    ports:
+#      - "3307:3306"
+#    networks:
+#      - backend-net
+#    restart: always
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=admin
+#      - MYSQL_PASSWORD=admin
+#      - MYSQL_USER=root
+#      - MYSQL_DATABASE=devjavasimplecrud
+#      - MYSQL_ROOT_HOST=%
+  backend:
+    image: dev-java-simple-crud:latest
+    networks:
+      - backend-net
+#    depends_on:
+#      - db
+    ports:
+      - "8787:8787"
+    tty: true
+    stdin_open: true
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+networks:
+  backend-net:
+    driver: bridge
