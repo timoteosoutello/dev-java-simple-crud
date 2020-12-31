@@ -9,10 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    private final String SPRING_ROLE = "ACTUATOR";
-
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-	http.csrf().disable().authorizeRequests().antMatchers("/**").hasRole(SPRING_ROLE).and().httpBasic();
+	http.authorizeRequests(authz -> authz.anyRequest().authenticated())
+		.oauth2ResourceServer(oauth2 -> oauth2.opaqueToken(opaque -> {
+		}));
     }
 }
