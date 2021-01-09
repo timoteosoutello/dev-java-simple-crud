@@ -8,6 +8,8 @@ This is simple API using:
 - Spring Actuator 
 - Swagger 
 - Open JDK 11 version
+- Okta Integration
+- Oauth2
 
 ## Configure environment
 1. Installing Java 11 - Download JDK 
