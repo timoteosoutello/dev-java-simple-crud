@@ -11,6 +11,7 @@
 		<!-- dependencies version -->
 		<commons-lang3.version>3.11</commons-lang3.version>
 		<jacoco.version>0.8.6</jacoco.version>
+		<jasypt-spring-boot-starter.version>2.1.2</jasypt-spring-boot-starter.version>
 		<javax-validation.version>2.0.1.Final</javax-validation.version>
 		<junit-engine.version>5.6.2</junit-engine.version>
 		<junit-platform.version>1.6.2</junit-platform.version>
@@ -19,6 +20,8 @@
 		<log4j2.version>2.14.0</log4j2.version>
 		<lombok.version>1.18.16</lombok.version>
 		<mockito.version>3.6.28</mockito.version>
+		<oauth2-oidc-sdk.version>8.29.1</oauth2-oidc-sdk.version>
+		<spring-boot-starter-oauth2-resource-server.version>2.4.1</spring-boot-starter-oauth2-resource-server.version>
 		<springdoc-openapi.version>1.5.2</springdoc-openapi.version>
 		<spring.cloud-version>Hoxton.SR9</spring.cloud-version>
 		<!-- other configurations -->
@@ -83,11 +86,25 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-cache</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.nimbusds/oauth2-oidc-sdk -->
+		<dependency>
+		    <groupId>com.nimbusds</groupId>
+		    <artifactId>oauth2-oidc-sdk</artifactId>
+		    <version>${oauth2-oidc-sdk.version}</version>
 		</dependency>
 		<!-- Cloud Starter config <dependency> <groupId>org.springframework.cloud</groupId> 
 			<artifactId>spring-cloud-starter-config</artifactId> </dependency> -->
@@ -102,6 +119,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.ulisesbocchio/jasypt-spring-boot-starter -->
+		<dependency>
+		    <groupId>com.github.ulisesbocchio</groupId>
+		    <artifactId>jasypt-spring-boot-starter</artifactId>
+		    <version>${jasypt-spring-boot-starter.version}</version>
 		</dependency>
 		<!-- QueryDSL Support -->
 		<dependency>
