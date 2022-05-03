@@ -30,64 +30,64 @@ import com.querydsl.core.types.Predicate;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class UserServiceTest {
 
-    @Autowired
-    private UserController userController;
+  @Autowired
+  private UserController userController;
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    @Autowired
-    private ProfileRepository profileRepository;
+  @Autowired
+  private ProfileRepository profileRepository;
 
-    @BeforeEach
-    public void setup() {
-	userRepository.deleteAll();
-    }
+  @BeforeEach
+  public void setup() {
+    userRepository.deleteAll();
+  }
 
-    @Test
-    public void doGetEmptyTest() {
-	Page<User> page = userController.query(getPredicate(), getPageable());
-	assert page.getTotalElements() == 0;
-    }
+  @Test
+  public void doGetEmptyTest() {
+    Page<User> page = userController.query(getPredicate(), getPageable());
+    assert page.getTotalElements() == 0;
+  }
 
-    @Test
-    public void doPostFailTest() {
-	Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
-	    userRepository.save(new User());
-	});
-    }
+  @Test
+  public void doPostFailTest() {
+    Assertions.assertThrows(DataIntegrityViolationException.class, () -> {
+      userRepository.save(new User());
+    });
+  }
 
-    @Test
-    public void doPostSuccessTest() {
-	Profile profile = profileRepository.save(createProfile());
-	User user = createUser(profile);
-	User savedUser = userRepository.save(user);
-	assert savedUser != null && user.getId() != null
-		&& userController.query(getPredicate(), getPageable()).getTotalElements() == 1;
-    }
+  @Test
+  public void doPostSuccessTest() {
+    Profile profile = profileRepository.save(createProfile());
+    User user = createUser(profile);
+    User savedUser = userRepository.save(user);
+    assert savedUser != null && user.getId() != null
+        && userController.query(getPredicate(), getPageable()).getTotalElements() == 1;
+  }
 
-    private Pageable getPageable() {
-	return PageRequest.of(0, 20);
-    }
+  private Pageable getPageable() {
+    return PageRequest.of(0, 20);
+  }
 
-    private Predicate getPredicate() {
-	return new BooleanBuilder();
-    }
+  private Predicate getPredicate() {
+    return new BooleanBuilder();
+  }
 
-    private User createUser(Profile profile) {
-	User user = new User();
-	user.setEmail("teste@com");
-	user.setPassword("strongPassword");
-	user.setPhone("931235");
-	user.setProfile(null);
-	user.setName("name");
-	user.setProfile(profile);
-	return user;
-    }
+  private User createUser(Profile profile) {
+    User user = new User();
+    user.setEmail("teste@com");
+    user.setPassword("strongPassword");
+    user.setPhone("931235");
+    user.setProfile(null);
+    user.setName("name");
+    user.setProfile(profile);
+    return user;
+  }
 
-    private Profile createProfile() {
-	Profile profile = new Profile();
-	profile.setDescription("Master Blaster");
-	return profile;
-    }
+  private Profile createProfile() {
+    Profile profile = new Profile();
+    profile.setDescription("Master Blaster");
+    return profile;
+  }
 }

@@ -14,9 +14,8 @@ import com.github.model.User;
  */
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer {
-    @Override
-    public void configureRepositoryRestConfiguration(final RepositoryRestConfiguration config) {
-	config.exposeIdsFor(Profile.class);
-	config.exposeIdsFor(User.class);
-    }
+  public void configureRepositoryRestConfiguration(final RepositoryRestConfiguration config) {
+    config.exposeIdsFor(Profile.class);
+    config.exposeIdsFor(User.class);
+  }
 }

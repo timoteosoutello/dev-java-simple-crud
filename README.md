@@ -7,12 +7,12 @@ This is simple API using:
 - spring Data Rest 
 - Spring Actuator 
 - Swagger 
-- Open JDK 11 version
+- Open JDK 17 version
 - Okta Integration
 - Oauth2
 
 ## Configure environment
-1. Installing Java 11 - Download JDK 
+1. Installing Java 17 - Download JDK 
    1. Set JAVA_HOME env based on where the JDK will be installed. Add to PATH as JAVA_HOME\bin. 
    2. To know if the java is installed, run *java -version* command on prompt should work 
 2. Installing Maven
