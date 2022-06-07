@@ -24,35 +24,35 @@ import com.github.usecase.UserClickUsecase;
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class UserClickUsecaseTest {
 
-    @Autowired
-    private UserClickUsecase userClickUsecase;
+  @Autowired
+  private UserClickUsecase userClickUsecase;
 
-    @Autowired
-    private UserClickRepository userClickRepository;
+  @Autowired
+  private UserClickRepository userClickRepository;
 
-    @BeforeEach
-    public void setup() {
-	userClickRepository.deleteAll();
+  @BeforeEach
+  public void setup() {
+    userClickRepository.deleteAll();
+  }
+
+  @Test
+  public void includeTrackingPathSuccessTest() {
+    UserClickDTO userClickDTO = new UserClickDTO();
+    // As I receive a new useClick entity
+    userClickDTO.setPath("TEST");
+    Optional<UserClick> userClickFoundOptional = userClickRepository.findByPath(userClickDTO.getPath());
+    // Check if was saved
+    UserClick userClickSaved = userClickUsecase.includeUserTracking(userClickDTO);
+    // Check if the counter really was incremented
+    if (userClickFoundOptional.isPresent()) {
+      assert userClickSaved.getNumberOfClicks().equals(userClickFoundOptional.get().getNumberOfClicks() + 1);
+    } else {
+      assert userClickSaved.getNumberOfClicks().equals(1L);
     }
+  }
 
-    @Test
-    public void includeTrackingPathSuccessTest() {
-	UserClickDTO userClickDTO = new UserClickDTO();
-	// As I receive a new useClick entity
-	userClickDTO.setPath("TEST");
-	Optional<UserClick> userClickFoundOptional = userClickRepository.findByPath(userClickDTO.getPath());
-	// Check if was saved
-	UserClick userClickSaved = userClickUsecase.includeUserTracking(userClickDTO);
-	// Check if the counter really was incremented
-	if (userClickFoundOptional.isPresent()) {
-	    assert userClickSaved.getNumberOfClicks().equals(userClickFoundOptional.get().getNumberOfClicks() + 1);
-	} else {
-	    assert userClickSaved.getNumberOfClicks().equals(1L);
-	}
-    }
+  @Test
+  public void includeTrackingPathWithEmptyFieldTest() {
 
-    @Test
-    public void includeTrackingPathWithEmptyFieldTest() {
-
-    }
+  }
 }

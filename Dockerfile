@@ -1,7 +1,6 @@
-FROM adoptopenjdk/openjdk11-openj9:jre-11.0.9_11_openj9-0.23.0
+FROM ghcr.io/graalvm/graalvm-ce:ol8-java17-22
 
 ENV APP_HOME=/usr/app/
-# ENV JAVA_TOOL_OPTIONS "-Dspring.profiles.active=docker"
 
 RUN mkdir $APP_HOME
 
