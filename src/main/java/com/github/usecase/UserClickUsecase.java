@@ -16,16 +16,15 @@ public class UserClickUsecase {
     @Autowired
     private UserClickService userClickService;
 
-    // TODO - Check Concurrency
     public synchronized UserClick includeUserTracking(UserClickDTO userClickDTO) {
 	UserClick userTemp = UserClickBuilder.buildUserClick(userClickDTO);
 	Optional<UserClick> userClickOptional = userClickService.findByPath(userTemp.getPath());
-	if (userClickOptional.isPresent()) {
-	    UserClick userClickToBePersisted = userClickOptional.get();
-	    userClickToBePersisted.incrementNumberOfClicks();
-	    return userClickService.saveOrUpdate(userClickToBePersisted);
-	} else {
-	    return userClickService.saveOrUpdate(userTemp);
-	}
+		if (userClickOptional.isPresent()) {
+		    UserClick userClickToBePersisted = userClickOptional.get();
+		    userClickToBePersisted.incrementNumberOfClicks();
+		    return userClickService.saveOrUpdate(userClickToBePersisted);
+		} else {
+		    return userClickService.saveOrUpdate(userTemp);
+		}
     }
 }

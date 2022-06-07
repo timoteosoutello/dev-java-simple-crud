@@ -20,7 +20,7 @@ public class UserClickController {
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody UserClickDTO userClickDTO) {
-	userClickUsecase.includeUserTracking(userClickDTO);
-	return new ResponseEntity<String>(HttpStatus.OK);
+    	userClickUsecase.includeUserTracking(userClickDTO);
+    	return new ResponseEntity<String>(HttpStatus.OK);
     }
 }
